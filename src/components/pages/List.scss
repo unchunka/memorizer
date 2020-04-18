@@ -1,0 +1,9 @@
+#list {
+  padding:40px;
+}
+
+@media only screen and (max-width: 768px) {
+  #list {
+    padding:0px;
+  }
+}

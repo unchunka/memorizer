@@ -1,0 +1,66 @@
+.App {
+
+  display: grid;
+  grid-template-areas:
+          "head navigation"
+          "main main"
+          "foot foot";
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 50% 50%;
+  text-align:center;
+  min-height: 100vh;
+  background:#F1F1F1;
+  font-family: Arial;
+
+  header {
+    grid-area:head;
+    background:#4527a0;
+    text-align:center;
+    padding:10px;
+  }
+
+  #nav {
+    grid-area:navigation;
+    background:#4527a0;
+  }
+
+  #page {
+    grid-area:main;
+  }
+
+  footer {
+    grid-area:foot;
+    text-align:center;
+    background:#4527a0;
+    color:white;
+    padding:5px;
+    a {
+      margin:5px;
+      color:white;
+    }
+  }
+
+  h1 {
+    font-family: 'Cabin Sketch', cursive;
+    text-transform: uppercase;
+    color: white;
+  }
+
+}
+
+
+@media only screen and (max-width: 768px) {
+  .App {
+    grid-template-areas:
+            "head"
+            "navigation"
+            "main"
+            "foot";
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-columns: 100%;
+
+    header {
+      display:none;
+    }
+  }
+}

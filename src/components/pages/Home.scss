@@ -1,0 +1,97 @@
+#home {
+
+  display: grid;
+  grid-template-areas: "controls controls" "fr en" "settings settings";
+  grid-template-rows: auto;
+  grid-template-columns: 50% 50%;
+  text-align:center;
+  padding: 20px;
+
+
+  #en {
+    grid-area:en;
+    .CardHeader {
+      min-height: 50px;
+      background: white url("../../assets/en-flag.png") no-repeat;
+      background-size:100% 100%;
+    }
+  }
+  table {
+    border-collapse: collapse;
+  }
+  td, th {
+    border: 1px solid #333;
+  }
+
+  #fr {
+    grid-area:fr;
+    .CardHeader {
+      min-height: 50px;
+      background: white url("../../assets/fr-flag.png") no-repeat;
+      background-size:100% 100%;
+    }
+  }
+
+  #fr, #en {
+    font-family: "Reenie Beanie";
+    margin-top:20px;
+    padding:20px;
+    color:#313131;
+    font-size:24px;
+  }
+
+  #fr span, #en span {
+    color:black;
+  }
+
+  #controls {
+    grid-area:controls;
+  }
+
+  #controls {
+    button {
+      color:white;
+      font-family: 'Cabin Sketch', cursive;
+      background:#11a769;
+      padding:5px;
+      margin:10px;
+    }
+
+    button.next {
+      background:#117ea7;
+    }
+    button.solution {
+      background:#11a769;
+    }
+    button.timer {
+      background:#a71111;
+    }
+  }
+
+  #countdown {
+    margin-left:20px;
+    border-radius:40px;
+    padding:5px;
+    color:white;
+    background:#44a711;
+    display:inline-block;
+  }
+
+}
+
+
+@media only screen and (max-width: 768px) {
+
+  #home {
+
+    grid-template-areas: "controls" "fr" "en" "settings";
+    grid-template-rows: auto;
+    grid-template-columns: 100%;
+
+    #fr, #en {
+      font-size:35px;
+    }
+
+  }
+
+}

@@ -6,6 +6,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 import {SettingsContext} from "../../contexts/SettingsProvider";
+import {useAPI} from "../../utils/useAPI";
 
 export default function Home () {
 
@@ -24,27 +25,26 @@ export default function Home () {
 
     const [countdownToDisplay, setCountdownToDisplay] = useState(5);
 
-    const [wordRange,] = useState(wordRangeFromContext);
+    const [wordRange, setWordRange] = useState(wordRangeFromContext);
 
     let countdown = 5;
 
-    var URL = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_API_URL_PROD : process.env.REACT_APP_API_URL_DEV;
-
-    const [{ data: words },] = useAxios(
-        {
-            url: URL,
-            method: 'GET'
-        }
-    );
+    const [{ data: words },] = useAPI('GET', './api.php');
 
     const nextWord = () => {
         let newIndex = index;
         while(index === newIndex) {
-            newIndex = words.length - 1 + Math.floor(Math.random() * wordRange);
+            newIndex = words.length - 1 - Math.floor(Math.random() * wordRange);
         }
         setIndex(newIndex);
         setHiddenEn(true);
     }
+
+    useEffect(() => {
+        if (words && wordRange == 0) {
+            setWordRange(words.length);
+        }
+    },[words]);
 
     const revealEn = () => {
         setHiddenEn(false);

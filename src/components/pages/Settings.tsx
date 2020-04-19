@@ -18,7 +18,7 @@ export default function Settings () {
 
     const onWordRangeChange = (event:any, value:any) => {
         // @ts-ignore
-        authContext.setWordRange(value);
+        authContext.setWordRange(value * -1);
     }
 
 

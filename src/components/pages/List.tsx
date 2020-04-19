@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -8,26 +8,11 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import useAxios from "axios-hooks";
 import './List.scss';
+import {useAPI} from "../../utils/useAPI";
 
 export default function List () {
 
-    const [words, setWords] = useState();
-
-    var URL = process.env.NODE_ENV === 'production' ? process.env.REACT_APP_API_URL_PROD : process.env.REACT_APP_API_URL_DEV;
-
-    const [{ data: getWords },] = useAxios(
-        {
-            url: URL,
-            method: 'GET'
-        }
-    );
-
-    useEffect(() => {
-        if (getWords) {
-            setWords(getWords);
-        }
-
-    },[getWords])
+    const [{ data: words },] = useAPI('GET','./api.php');
 
     if (!words) return null;
 

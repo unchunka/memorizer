@@ -8,14 +8,15 @@ import List from "./components/pages/List";
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
-    Link
+    Route
 } from "react-router-dom";
+import { SnackbarProvider } from 'notistack';
 
 function App() {
 
   return (
-    <SettingsProvider>
+      <SnackbarProvider>
+      <SettingsProvider>
         <Router>
             <div className="App">
                 <header className="App-header">
@@ -43,7 +44,8 @@ function App() {
             </div>
         </Router>
     </SettingsProvider>
-  );
+    </SnackbarProvider>
+          );
 
 }
 
